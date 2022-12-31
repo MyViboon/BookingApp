@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +15,9 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 
-const Header = ({type}) => {
+const Header = ({ type }) => {
+  const navigate = useNavigate();
+  const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -30,6 +33,10 @@ const Header = ({type}) => {
     room: 1,
   });
 
+  const handleSearch = () => {
+    navigate("/hotels", { state: { destination, date, options } });
+  };
+
   const handleOption = (name, opertion) => {
     setOptions((prev) => {
       return {
@@ -40,7 +47,11 @@ const Header = ({type}) => {
   };
   return (
     <div className="header">
-      <div className={type === "list" ? "headerContainer listMode": "headerContainer"}>
+      <div
+        className={
+          type === "list" ? "headerContainer listMode" : "headerContainer"
+        }
+      >
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
@@ -63,7 +74,7 @@ const Header = ({type}) => {
             <span>Airport Taxi</span>
           </div>
         </div>
-        { type !== "list" &&
+        {type !== "list" && (
           <>
             <h1 className="headerTitle">
               A lifetime of discounts? It's Genius.
@@ -80,6 +91,7 @@ const Header = ({type}) => {
                   type="text"
                   placeholder="Where are you going"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
@@ -97,6 +109,7 @@ const Header = ({type}) => {
                     onChange={(item) => setDate([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={date}
+                    minDate={new Date()}
                     className="date"
                   />
                 )}
@@ -176,11 +189,13 @@ const Header = ({type}) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>
+                <button className="headerBtn" onClick={() => handleSearch()}>
+                  Search
+                </button>
               </div>
             </div>
           </>
-        }
+        )}
       </div>
     </div>
   );
