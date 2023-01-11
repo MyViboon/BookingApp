@@ -3,6 +3,27 @@
   padding: 20px;
   margin-top: 20px;
 
+  .datatableTitle{
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: gray;
+    align-items: center;
+    justify-content: space-between;
+
+    .link{
+      text-decoration: none;
+      color: green;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid green;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
   .cellWithImg {
     display: flex;
     align-items: center;

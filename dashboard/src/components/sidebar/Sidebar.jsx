@@ -11,68 +11,75 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <span className="logo">ViboonAdmin</span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">ViboonAdmin</span>
+        </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
-            <p className="title">MAIN</p>
+          <p className="title">MAIN</p>
           <li>
-            <DashboardIcon className="icon"/>
+            <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
           <li>
-            <PersonOutlineIcon className="icon"/>
-            <span>Users</span>
+            <Link to="/users" style={{ textDecoration: "none" }}>
+              <PersonOutlineIcon className="icon" />
+              <span>Users</span>
+            </Link>
           </li>
           <li>
-            <StoreIcon className="icon"/>
-            <span>Products</span>
+            <Link to="/products" style={{ textDecoration: "none" }}>
+              <StoreIcon className="icon" />
+              <span>Products</span>
+            </Link>
           </li>
           <li>
-            <CreditCardIcon className="icon"/>
+            <CreditCardIcon className="icon" />
             <span>Orders</span>
           </li>
           <li>
-            <LocalShippingIcon className="icon"/>
+            <LocalShippingIcon className="icon" />
             <span>Delivery</span>
           </li>
           <p className="title">USEFUL</p>
 
           <li>
-            <InsertChartIcon className="icon"/>
+            <InsertChartIcon className="icon" />
             <span>Stats</span>
           </li>
           <li>
-            <NotificationsNoneIcon className="icon"/>
+            <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
           </li>
           <p className="title">SERVICE</p>
           <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon"/>
+            <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="icon"/>
+            <PsychologyOutlinedIcon className="icon" />
             <span>Logs</span>
           </li>
           <li>
-            <SettingsApplicationsIcon className="icon"/>
+            <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
           </li>
           <p className="title">USER</p>
           <li>
-            <AccountCircleOutlinedIcon className="icon"/>
+            <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
           <li>
-            <ExitToAppIcon className="icon"/>
+            <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
         </ul>
