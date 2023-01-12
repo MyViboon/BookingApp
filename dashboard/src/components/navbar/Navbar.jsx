@@ -1,44 +1,61 @@
-import "./navbar.scss"
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import "./navbar.scss";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { DarkModeContext } from "../../context/darkModeContext";
+import { useContext, useState } from "react";
 
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
+  const [theme, setTheme] = useState(false);
+
+  const hand = () => {
+    dispatch({ type: "TOGGLE" });
+    setTheme(!theme);
+  };
+
+  const icon = theme ? (
+    <DarkModeOutlinedIcon className="icon" />
+  ) : (
+    <LightModeOutlinedIcon className="icon" />
+  );
+
   return (
-    <div className='navbar'>
+    <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          <input type="text"  placeholder="Search..."/>
-          <SearchOutlinedIcon/>
+          <input type="text" placeholder="Search..." />
+          <SearchOutlinedIcon />
         </div>
         <div className="items">
           <div className="item">
-            <LanguageOutlinedIcon className="icon"/>
+            <LanguageOutlinedIcon className="icon" />
             EngLish
           </div>
           <div className="item">
-            <DarkModeOutlinedIcon className="icon"/>
+            <div onClick={hand}>{icon}</div>
           </div>
           <div className="item">
-            <FullscreenExitOutlinedIcon className="icon"/>
+            <FullscreenExitOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <NotificationsNoneOutlinedIcon className="icon"/>
+            <NotificationsNoneOutlinedIcon className="icon" />
             <div className="couter">1</div>
           </div>
           <div className="item">
-            <ChatBubbleOutlineOutlinedIcon className="icon"/>
+            <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="couter">2</div>
           </div>
           <div className="item">
-            <ListOutlinedIcon className="icon"/>
+            <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
-          <img
+            <img
               src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               alt=""
               className="avatar"
@@ -47,7 +64,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
